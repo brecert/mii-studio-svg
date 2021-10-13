@@ -1,0 +1,107 @@
+.mii {
+  --miiFavoriteColor: 11;
+  --miiGender: 1;
+
+  --miiBodyHeight: 93;
+  --miiBodyWidth: 77;
+
+  --miiFaceColor: 6;
+  --miiFaceHairColor: 4;
+  --miiFaceMakeupType: 11;
+  --miiFaceShapeType: 11;
+  --miiFaceWrinklesType: 11;
+
+  --miiHairColor: 4;
+  --miiHairFlipped: 0;
+  --miiHairType: 41;
+
+  --miiEyebrowColor: 4;
+  --miiEyebrowPosX: 12;
+  --miiEyebrowPosY: 0;
+  --miiEyebrowRotation: 10;
+  --miiEyebrowSize: 8;
+  --miiEyebrowStretch: 6;
+  --miiEyebrowType: 6;
+
+  --miiEyeColor: 11;
+  --miiEyePosX: 0;
+  --miiEyePosY: 13;
+  --miiEyeRotation: 3;
+  --miiEyeSize: 4;
+  --miiEyeStretch: 3;
+  --miiEyeType: 2;
+
+  --miiNosePosY: 15;
+  --miiNoseSize: 2;
+  --miiNoseType: 15;
+
+  --miiGlassesColor: 18;
+  --miiGlassesPosY: 0;
+  --miiGlassesSize: 0;
+  --miiGlassesType: 13;
+
+  --miiMouthColor: 19;
+  --miiMouthPosY: 0;
+  --miiMouthSize: 8;
+  --miiMouthStretch: 6;
+  --miiMouthType: 33;
+
+  --miiBeardType: 1;
+  --miiMustachePosY: 0;
+  --miiMustacheSize: 4;
+  --miiMustacheType: 5;
+
+  --miiMoleEnabled: 0;
+  --miiMolePosX: 8;
+  --miiMolePosY: 21;
+  --miiMoleSize: 4;
+}
+
+.mii {
+--miiFaceHairColor: 8;
+--miiBeardType: 0;
+--miiBodyWidth: 19;
+--miiEyeStretch: 3;
+--miiEyeColor: 11;
+--miiEyeRotation: 3;
+--miiEyeSize: 4;
+--miiEyeType: 59;
+--miiEyePosX: 2;
+--miiEyePosY: 13;
+--miiEyebrowStretch: 1;
+--miiEyebrowColor: 5;
+--miiEyebrowRotation: 6;
+--miiEyebrowSize: 3;
+--miiEyebrowType: 9;
+--miiEyebrowPosX: 2;
+--miiEyebrowPosY: 10;
+--miiFaceColor: 0;
+--miiFaceMakeupType: 0;
+--miiFaceShapeType: 0;
+--miiFaceWrinklesType: 1;
+--miiFavoriteColor: 8;
+--miiMiiGender: 1;
+--miiGlassesColor: 8;
+--miiGlassesSize: 4;
+--miiGlassesType: 0;
+--miiGlassesPosY: 10;
+--miiHairColor: 6;
+--miiHairFlipped: -1;
+--miiHairType: 102;
+--miiBodyHeight: 102;
+--miiMoleSize: 4;
+--miiMoleEnabled: -1;
+--miiMolePosX: 2;
+--miiMolePosY: 20;
+--miiMouthStretch: 2;
+--miiMouthColor: 19;
+--miiMouthSize: 2;
+--miiMouthType: 8;
+--miiMouthPosY: 13;
+--miiMustacheSize: 4;
+--miiMustacheType: 0;
+--miiMustachePosY: 10;
+--miiNoseSize: 3;
+--miiNoseType: 1;
+--miiNosePosY: 10;
+}

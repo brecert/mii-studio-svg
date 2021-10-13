@@ -1,0 +1,415 @@
+@use "sass:list";
+@import url(./mii_data.css);
+
+@mixin part(
+  $name: '',
+  $width,
+  $height,
+  $offsetX: 0,
+  $offsetY: 0,
+  $sizeStep: 1,
+  $baseSize: 1,
+  $transform: ''
+) {
+  --width: #{$width};
+  --height: #{$height};
+
+  width: var(--width);
+  height: var(--height);
+
+  transform-box: fill-box;
+  transform-origin: center;
+
+  x: 50%;
+  y: 50%;
+  
+  $transformData:
+    translate($offsetX * 0.25, $offsetY * 0.25)
+    translate(
+      calc( var(--width) * -0.5 ),
+      calc( var(--height) * -0.5 )
+    )
+    scale(0.25)
+    #{$transform}
+  ;
+
+  @if $sizeStep != 1 {
+    $transformData: list.append(
+      $transformData,
+      scale(calc(#{$baseSize} + (var(--mii#{$name}Size) * #{$sizeStep})))
+    )
+  }
+
+  transform: #{$transformData}
+}
+
+html, body {
+  display: grid;
+  margin: 0;
+}
+
+svg {
+  background: rgb(171, 171, 171);
+  
+  
+  // DEBUG BACKGROUNDS
+  // background-image: url(https://i.imgur.com/jiRHNcl.png);
+  // background-image: url(https://i.imgur.com/e0T30Os.png);
+  // background-image: url(https://i.imgur.com/TdFqrq6.png);
+  // background-image: url(https://i.imgur.com/sFiQkFf.png);
+  // background-image: url(./assets/pointed_canvas.png);
+  // background-image: url(./assets/pixc.png);
+  // background-image: url(./assets/miieye.png);
+  // background-image: url(./assets/17b.png);
+  background-size: 100%;
+}
+
+.mii {
+  --bodyHeight: calc(2 * (1 + 0.00625 * (var(--miiBodyHeight) - 64)));
+  --bodyWidth: calc(2 * (1 + 0.004 * (var(--miiBodyWidth) - 64) + 0.003 * (var(--miiBodyHeight) - 64)))
+}
+
+.view {
+  transform:
+    translateY(calc(200.75px - var(--bodyHeight) * 340px * 0.25))
+}
+
+.calcHeight {
+  transform:
+    translate(50%, calc( 50% + var(--bodyHeight) * 340px * 0.25 ))
+}
+
+.body {
+  transform:
+    translate(50%, 50%);
+
+  image {
+    width: 220px;
+    height: 340px;
+
+    transform-box: fill-box;
+    transform-origin: center 0;
+
+    transform:
+      translate(-50%, 0%)
+      scale(0.25)
+      scale(var(--bodyWidth), var(--bodyHeight));
+  }
+}
+
+.face, .hair, .beard {
+  transform:
+    translate(50%, 50%)
+    scale(0.25)
+    translate(-512px, -803.25px);
+
+  image {
+    width: 1024px;
+    height: 1024px;
+  }
+}
+
+// .face, .hair, .beard {
+//   x: 50%;
+//   y: 50%;
+  
+//   width: 1024px;
+//   height: 1024px;
+  
+//   transform-box: fill-box;
+//   transform-origin: 50% 50%;
+//   transform:
+//     translate(-50%, -50%)
+//     translateY(calc(-291.25 * 0.25px))
+//     scale(0.25)
+
+//   // @include part(
+//   //   $width: 1024px,
+//   //   $height: 1024px,
+//   //   $offsetY: -291.25px
+//   // )
+// }
+
+// .head {
+//   transform:
+//     translate(50%, calc(50% - 291px * 0.25))
+// }
+
+.eyebrow {
+  --flip: 1;
+  
+  transform:
+    translate(50%, 50%)
+    translate(
+      calc((var(--miiEyebrowPosX) * 14 - 2) * 0.25px * var(--flip)),
+      calc((var(--miiEyebrowPosY) * 16.5 - 464.25) * 0.25px)
+    )
+    scale(var(--flip), 1)
+    scale(0.25);
+
+  image {
+    width: 180px;
+    height: 135px;
+    
+    x: -4px;
+    y: -105px;
+
+    transform:
+      rotate(calc(67.5deg - 11.25deg * var(--miiEyebrowRotation)))
+      scale(calc(0.4 + (var(--miiEyebrowSize) * 0.15)))
+      scaleY(calc(0.64 + var(--miiEyebrowStretch) * 0.12))
+  }
+}
+
+.nose {
+  transform:
+    translate(50%, calc(50% - (308.25 - var(--miiNosePosY) * 15) * 0.25px));
+
+  image {
+    width: 165px;
+    height: 220px;
+
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+
+    transform: 
+      translate(-50%, -50%)
+      scale(0.25)
+      scale(calc(var(--miiNoseSize) * 0.15 + 0.4));
+  }
+}
+
+.mouth {
+  transform:
+    translate(50%, calc(50% - 291px * 0.25))
+    translateY(calc((var(--miiMouthPosY) * 16.75) * 0.25px));
+
+  image {
+    width: 220px;
+    height: 110px;
+
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+
+    transform: 
+      translate(-50%, -50%)
+      scale(0.25)
+      translateY(50.8px * 0.25)
+      scale(calc(var(--miiMouthSize) * 0.15 + 0.4))
+      scaleY(calc(var(--miiMouthStretch) * 0.11 + 0.65))
+  }
+}
+
+/* 
+  baseX: 99.631,
+  baseY: 48.531,
+  xOffset: - 100.16,
+  yOffset: 502.76,
+  yStep: 16.652,
+  scaleOffset: 0.40918,
+  scaleStep: 0.15066
+*/
+
+// .eye {
+//   --eyeFlipDir: 1;
+  
+//   transform:
+//     translate(
+//         calc(50% + (11 + var(--miiEyePosX) * 14) * 0.25px),
+//         calc(50% - (470.25 - var(--miiEyePosY) * 16.5) * 0.25px)
+//     )
+
+//   image {
+    
+//   }
+// }
+
+.eye {
+  --flip: 1;
+  --eyeScale: calc(1 + ((var(--miiEyeSize) - 4) * 0.15));
+  --eyeStretch: calc(1 + (var(--miiEyeStretch) - 3) * 0.12);
+  --eyeRotation: calc(11.25deg * (4 - var(--miiEyeRotation)));
+
+  transform: 
+    translate(50%, 50%)
+    scale(0.25)
+    scaleX(var(--flip))
+    translate(
+      calc(var(--miiEyePosX) * 14px + 11px),
+      calc(var(--miiEyePosY) * 16.5px - 470.25px)
+    )
+    rotate(var(--eyeRotation));
+
+  image {
+    width: 180px;
+    height: 150px;
+  
+    transform: 
+      translate(
+        calc(var(--eyeScale) * -16px),
+        calc(var(--eyeScale) * -75px * var(--eyeStretch)),
+      )
+      scale(var(--eyeScale))
+      scaleY(var(--eyeStretch))
+      // scale(1.45)
+      // scaleY(1.36);
+  }
+}
+
+// .eye {
+//   --flip: 1;
+//   --eyeScale: calc(1 + ((var(--miiEyeSize) - 4) * 0.15));
+//   --eyeStretch: calc(1 + (var(--miiEyeStretch) - 3) * 0.12); 
+  
+//   transform:
+//     translate(50%, 50%)
+//     translate(
+//       calc((var(--miiEyePosX) * 14 + 11) * var(--flip) * 0.25px),
+//       calc((var(--miiEyePosY) * 16.5 - 470.255) * 0.25px)
+//     )
+//     scale(var(--flip), 1);
+
+//   image {
+//     width: calc(180px * var(--eyeScale) * 0.25);
+//     height: calc(135px * var(--eyeScale) * var(--eyeStretch) * 0.25);
+
+//     transform:
+//       rotate(calc(11.25deg * (4 - var(--miiEyeRotation))))
+//       translate(
+//         calc(-16px * var(--eyeScale)),
+//         calc(-75px * var(--eyeScale) * var(--eyeStretch))
+//       )
+//       // scale(0.25)
+//       // scale(var(--eyeScale))
+//       // scaleY(var(--eyeStretch))
+//       // translate(-16px, -75px)
+//   }
+// }
+
+.mustache {
+  transform:
+    translate(50%, 50%)
+    translate(0, -300.5px * 0.25)
+    translateY(calc(var(--miiMustachePosY) * 16.6px * 0.25))
+    scale(0.25);
+
+  image {
+    width: 200px;
+    height: 170px;
+
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+
+    transform: 
+      translate(-50%, 0)
+      scale(calc(var(--miiMustacheSize) * 0.15 + 0.4))
+  } 
+
+  // image {
+  
+
+  //   transform: 
+  //     translate(-50%, -50%)
+  //     scale(0.25)
+  //     translateY(48.5px)
+  //     scale(calc(var(--miiMustacheSize) * 0.15 + 0.4))
+  // }
+
+  // transform-box: fill-box;
+  // transform-origin: center;
+
+  // x: 50%;
+  // y: 50%;
+  
+  // transform:
+  //   translate(0, calc(-251.95px * 0.25))
+  //   translate(
+  //     calc( var(--width) * -0.5 ),
+  //     calc( var(--height) * -0.5 )
+  //   )
+  //   scale(0.25)
+}
+
+// .eye {
+//   @include part(
+//     'Eye',
+//     $width: 180px,
+//     $height: 150px,
+//     $offsetX: 11px,
+//     $offsetY: -470.25px,
+//     $transform:
+//       translateX(calc(var(--miiEyePosX) * 14px))
+//       translateY(calc(var(--miiEyePosY) * 16.5px))
+//   )
+// }
+
+// .mustache {
+//   @include part(
+//     'Mustache',
+//     $width: 200px,
+//     $height: 170px,
+//     $offsetY: -251.95px,
+//     $baseSize: 0.41,
+//     $sizeStep: 0.15,
+//   )
+// }
+
+.glasses {
+  @include part(
+    'Glasses',
+    $width: 590px,
+    $height: 230px,
+    $offsetY: -408.61px,
+    $baseSize: 0.37,
+    $sizeStep: 0.158,
+  )
+}
+
+.mole {
+  transform:
+    translate(50%, 50%)
+    scale(0.25)
+    translate(-217.1px, -466.8px)
+    translate(
+      calc(var(--miiMolePosX) * 27.4px),
+      calc(var(--miiMolePosY) * 16.6px)
+    );
+
+  image {
+    --offsetX: 349.67px;
+    --offsetY: 669.83px;
+
+    width: 1024px;
+    height: 1024px;
+
+    transform-box: fill-box;
+    transform-origin: var(--offsetX) var(--offsetY);
+
+    transform:
+      translate(calc(-1 * var(--offsetX)), calc(-1 * var(--offsetY)) )
+      scale(calc(var(--miiMoleSize) * 0.16 + 0.31))
+      // translate()
+      // scale(0.5);
+
+    // transform:
+      // translate(-349.67px, -669.83px)
+      // scale(3)
+      // translate(-566px * 0.25, -333px)
+      // translate(-50%, -50%)
+      // translate(0, -349px)
+      // translate(915px, 336px);
+  }
+}
+
+// .mole {
+//   transform: 
+//     translate(
+//       calc(50% - 217.1px * 0.25),
+//       calc(50% - 466.8px * 0.25)
+//     )
+// }
+
+// .glasses {
+//   transform:
+//     translate(50%, calc(50% - (408.61px * 0.25)))
+// }
