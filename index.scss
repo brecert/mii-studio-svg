@@ -46,11 +46,17 @@
 html, body {
   display: grid;
   margin: 0;
+  background-color: rgb(242 242 242);
 }
 
 .mii {
   --bodyHeight: calc(2 * (1 + 0.00625 * (var(--miiBodyHeight) - 64)));
   --bodyWidth: calc(2 * (1 + 0.004 * (var(--miiBodyWidth) - 64) + 0.003 * (var(--miiBodyHeight) - 64)));
+}
+
+svg {
+  border: 3px solid gray;
+  margin: 10px;
 }
 
 .view {
