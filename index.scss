@@ -1,6 +1,7 @@
 @use "sass:list";
 @import url(./mii_data.css);
 
+// todo: either remove this or finish it.
 @mixin part(
   $name: '',
   $width,
@@ -48,22 +49,6 @@ html, body {
   margin: 0;
 }
 
-svg {
-  background: rgb(171, 171, 171);
-  
-  
-  // DEBUG BACKGROUNDS
-  // background-image: url(https://i.imgur.com/jiRHNcl.png);
-  // background-image: url(https://i.imgur.com/e0T30Os.png);
-  // background-image: url(https://i.imgur.com/TdFqrq6.png);
-  // background-image: url(https://i.imgur.com/sFiQkFf.png);
-  // background-image: url(./assets/pointed_canvas.png);
-  // background-image: url(./assets/pixc.png);
-  // background-image: url(./assets/miieye.png);
-  // background-image: url(./assets/17b.png);
-  background-size: 100%;
-}
-
 .mii {
   --bodyHeight: calc(2 * (1 + 0.00625 * (var(--miiBodyHeight) - 64)));
   --bodyWidth: calc(2 * (1 + 0.004 * (var(--miiBodyWidth) - 64) + 0.003 * (var(--miiBodyHeight) - 64)))
@@ -108,32 +93,6 @@ svg {
     height: 1024px;
   }
 }
-
-// .face, .hair, .beard {
-//   x: 50%;
-//   y: 50%;
-  
-//   width: 1024px;
-//   height: 1024px;
-  
-//   transform-box: fill-box;
-//   transform-origin: 50% 50%;
-//   transform:
-//     translate(-50%, -50%)
-//     translateY(calc(-291.25 * 0.25px))
-//     scale(0.25)
-
-//   // @include part(
-//   //   $width: 1024px,
-//   //   $height: 1024px,
-//   //   $offsetY: -291.25px
-//   // )
-// }
-
-// .head {
-//   transform:
-//     translate(50%, calc(50% - 291px * 0.25))
-// }
 
 .eyebrow {
   --flip: 1;
@@ -200,30 +159,6 @@ svg {
   }
 }
 
-/* 
-  baseX: 99.631,
-  baseY: 48.531,
-  xOffset: - 100.16,
-  yOffset: 502.76,
-  yStep: 16.652,
-  scaleOffset: 0.40918,
-  scaleStep: 0.15066
-*/
-
-// .eye {
-//   --eyeFlipDir: 1;
-  
-//   transform:
-//     translate(
-//         calc(50% + (11 + var(--miiEyePosX) * 14) * 0.25px),
-//         calc(50% - (470.25 - var(--miiEyePosY) * 16.5) * 0.25px)
-//     )
-
-//   image {
-    
-//   }
-// }
-
 .eye {
   --flip: 1;
   --eyeScale: calc(1 + ((var(--miiEyeSize) - 4) * 0.15));
@@ -256,36 +191,6 @@ svg {
   }
 }
 
-// .eye {
-//   --flip: 1;
-//   --eyeScale: calc(1 + ((var(--miiEyeSize) - 4) * 0.15));
-//   --eyeStretch: calc(1 + (var(--miiEyeStretch) - 3) * 0.12); 
-  
-//   transform:
-//     translate(50%, 50%)
-//     translate(
-//       calc((var(--miiEyePosX) * 14 + 11) * var(--flip) * 0.25px),
-//       calc((var(--miiEyePosY) * 16.5 - 470.255) * 0.25px)
-//     )
-//     scale(var(--flip), 1);
-
-//   image {
-//     width: calc(180px * var(--eyeScale) * 0.25);
-//     height: calc(135px * var(--eyeScale) * var(--eyeStretch) * 0.25);
-
-//     transform:
-//       rotate(calc(11.25deg * (4 - var(--miiEyeRotation))))
-//       translate(
-//         calc(-16px * var(--eyeScale)),
-//         calc(-75px * var(--eyeScale) * var(--eyeStretch))
-//       )
-//       // scale(0.25)
-//       // scale(var(--eyeScale))
-//       // scaleY(var(--eyeStretch))
-//       // translate(-16px, -75px)
-//   }
-// }
-
 .mustache {
   transform:
     translate(50%, 50%)
@@ -303,56 +208,8 @@ svg {
     transform: 
       translate(-50%, 0)
       scale(calc(var(--miiMustacheSize) * 0.15 + 0.4))
-  } 
-
-  // image {
-  
-
-  //   transform: 
-  //     translate(-50%, -50%)
-  //     scale(0.25)
-  //     translateY(48.5px)
-  //     scale(calc(var(--miiMustacheSize) * 0.15 + 0.4))
-  // }
-
-  // transform-box: fill-box;
-  // transform-origin: center;
-
-  // x: 50%;
-  // y: 50%;
-  
-  // transform:
-  //   translate(0, calc(-251.95px * 0.25))
-  //   translate(
-  //     calc( var(--width) * -0.5 ),
-  //     calc( var(--height) * -0.5 )
-  //   )
-  //   scale(0.25)
+  }
 }
-
-// .eye {
-//   @include part(
-//     'Eye',
-//     $width: 180px,
-//     $height: 150px,
-//     $offsetX: 11px,
-//     $offsetY: -470.25px,
-//     $transform:
-//       translateX(calc(var(--miiEyePosX) * 14px))
-//       translateY(calc(var(--miiEyePosY) * 16.5px))
-//   )
-// }
-
-// .mustache {
-//   @include part(
-//     'Mustache',
-//     $width: 200px,
-//     $height: 170px,
-//     $offsetY: -251.95px,
-//     $baseSize: 0.41,
-//     $sizeStep: 0.15,
-//   )
-// }
 
 .glasses {
   @include part(
@@ -388,28 +245,5 @@ svg {
     transform:
       translate(calc(-1 * var(--offsetX)), calc(-1 * var(--offsetY)) )
       scale(calc(var(--miiMoleSize) * 0.16 + 0.31))
-      // translate()
-      // scale(0.5);
-
-    // transform:
-      // translate(-349.67px, -669.83px)
-      // scale(3)
-      // translate(-566px * 0.25, -333px)
-      // translate(-50%, -50%)
-      // translate(0, -349px)
-      // translate(915px, 336px);
   }
 }
-
-// .mole {
-//   transform: 
-//     translate(
-//       calc(50% - 217.1px * 0.25),
-//       calc(50% - 466.8px * 0.25)
-//     )
-// }
-
-// .glasses {
-//   transform:
-//     translate(50%, calc(50% - (408.61px * 0.25)))
-// }
