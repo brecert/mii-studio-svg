@@ -4,7 +4,6 @@ const transformName = (name: string) => {
 
 const transformValue = (value: number | boolean): number => {
   if (typeof value === "boolean") {
-    console.log("e");
     return value === true ? 1 : -1;
   }
 
@@ -12,7 +11,7 @@ const transformValue = (value: number | boolean): number => {
 };
 
 export function toCSSVars(mii: Record<string, number | boolean>) {
-  Object.entries(mii)
+  return Object.entries(mii)
     .map(([name, value]) =>
       [transformName(name), transformValue(value)].join(": ")
     )

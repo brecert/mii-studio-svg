@@ -3,7 +3,7 @@
     "dev": "vite"
   },
   "devDependencies": {
-    "sass": "^1.42.1",
-    "vite": "^2.6.7"
+    "sass": "^1.57.1",
+    "vite": "^4.0.4"
   }
 }

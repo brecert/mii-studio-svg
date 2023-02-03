@@ -17,65 +17,99 @@
     >
       <g class="view">
         <g class="body">
-          <image href="./assets/brecert/body.png" />
+          <image id="body" />
         </g>
 
         <g class="face">
-          <image href="./assets/brecert/face.png" />
+          <image id="face" />
         </g>
 
         <g class="beard">
-          <image href="./assets/brecert/beard.png" />
+          <image id="beard" />
         </g>
 
         <g class="hair">
-          <image href="./assets/brecert/hair.png" />
+          <image id="hair" />
         </g>
 
         <g class="mole">
-          <image href="./assets/brecert/mole.png" />
+          <image id="mole" />
           <!-- <circle r="10px" fill="black" /> -->
         </g>
 
         <g class="eye">
-          <image href="./assets/brecert/eyes.png" preserveAspectRatio="none" />
+          <image id="eyeL" preserveAspectRatio="none" />
           <!-- <circle r="8px" fill="#7C7" /> -->
         </g>
 
         <g class="eye" style="--flip: -1">
-          <image href="./assets/brecert/eyes.png" preserveAspectRatio="none" />
+          <image id="eyeR" preserveAspectRatio="none" />
           <!-- <circle r="8px" fill="#7C7" /> -->
         </g>
 
         <g class="eyebrow">
-          <image href="./assets/brecert/eyebrows.png" />
+          <image id="eyebrowL" />
           <!-- <circle r="3" fill="white" /> -->
         </g>
 
         <g class="eyebrow" style="--flip: -1">
-          <image href="./assets/brecert/eyebrows.png" />
+          <image id="eyebrowR" />
           <circle r="3" fill="white" />
         </g>
 
         <g class="mouth">
-          <image href="./assets/brecert/mouth.png" />
+          <image id="mouth" />
           <!-- <circle r="3px" fill="yellow" /> -->
         </g>
 
         <g class="mustache">
-          <image href="./assets/brecert/mustache.png" />
+          <image id="mustache" />
           <!-- <circle r="10px" fill="#7C7" /> -->
         </g>
 
         <g class="nose">
-          <image href="./assets/brecert/nose.png" />
+          <image id="nose" />
           <!-- <circle r="4px" fill="salmon" /> -->
         </g>
 
-        <image class="glasses" href="./assets/brecert/glasses.png" />
+        <g class="glasses">
+          <image id="glasses" />
+        </g>
         <!-- <circle class="calcHeight" r="4px" fill="greenyellow" /> -->
         <!-- <circle class="glasses" r="3px" fill="green" /> -->
       </g>
     </svg>
+    <script defer>
+      const assets = {
+  body: "png/512/8/c/e/344a00817.png",
+  face: "png/512/8/7/3/d8726b8bb.png",
+  hair: "png/512/f/0/8/10598fdab.png",
+  eye: "png/512/7/4/3/4f00be235.png",
+  eyebrow: "png/512/4/4/1/f2d367a24.png",
+  nose: "png/512/6/b/3/a45239088.png",
+  mouth: "png/512/c/d/e/5e4cb8c52.png",
+  beard: "png/512/e/9/f/cc169ecbb.png",
+  mustache: "png/512/e/8/7/3f510f98e.png",
+  glasses: "png/512/6/e/2/50e19ee95.png",
+  mole: "png/512/b/6/0/dc28fe5be.png"
+};
+
+      for (const name in assets) {
+        const path = "downloads/" + assets[name];
+
+        console.log(name);
+
+        console.log(
+          document.querySelectorAll(`#${name}, #${name}L, #${name}R`)
+        );
+
+        document
+          .querySelectorAll(`#${name}, #${name}L, #${name}R`)
+          .forEach((entry) => {
+            console.log(entry);
+            entry.setAttribute("href", path);
+          });
+      }
+    </script>
   </body>
 </html>

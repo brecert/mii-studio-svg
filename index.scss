@@ -2,8 +2,7 @@
 @import url(./mii_data.css);
 
 // todo: either remove this or finish it.
-@mixin part(
-  $name: '',
+@mixin part($name: '',
   $width,
   $height,
   $offsetX: 0,
@@ -11,6 +10,7 @@
   $sizeStep: 1,
   $baseSize: 1,
   $transform: ''
+
 ) {
   --width: #{$width};
   --height: #{$height};
@@ -22,28 +22,21 @@
   transform-origin: center;
 
   x: 50%;
-  y: 50%;
-  
-  $transformData:
-    translate($offsetX * 0.25, $offsetY * 0.25)
-    translate(
-      calc( var(--width) * -0.5 ),
-      calc( var(--height) * -0.5 )
-    )
-    #{$transform}
-  ;
+  // y: 50%;
 
-  @if $sizeStep != 1 {
-    $transformData: list.append(
-      $transformData,
-      scale(calc(#{$baseSize} + (var(--mii#{$name}Size) * #{$sizeStep})))
-    )
+  $transformData: translate($offsetX * 0.25, $offsetY * 0.25) translate(calc(var(--width) * -0.5),
+    calc(var(--height) * -0.5)) #{$transform};
+
+  @if $sizeStep !=1 {
+    $transformData: list.append($transformData,
+      scale(calc(#{$baseSize} + (var(--mii#{$name}Size) * #{$sizeStep}))))
   }
 
   transform: #{$transformData}
 }
 
-html, body {
+html,
+body {
   display: grid;
   margin: 0;
   background-color: rgb(242 242 242);
@@ -63,13 +56,12 @@ svg {
   transform-origin: 50% 50%;
 
   transform:
-    translateY(calc(200.75px - var(--bodyHeight) * 340px * 0.25))
-    scale(0.25)
+    translateY(calc(200.75px - var(--bodyHeight) * 340px * 0.25)) scale(0.25)
 }
 
 .calcHeight {
   transform:
-    translate(50%, calc( 50% + var(--bodyHeight) * 340px * 0.25 ))
+    translate(50%, calc(50% + var(--bodyHeight) * 340px * 0.25))
 }
 
 .body {
@@ -84,15 +76,15 @@ svg {
     transform-origin: center 0;
 
     transform:
-      translate(-50%, 0%)
-      scale(var(--bodyWidth), var(--bodyHeight));
+      translate(-50%, 0%) scale(var(--bodyWidth), var(--bodyHeight));
   }
 }
 
-.face, .hair, .beard {
+.face,
+.hair,
+.beard {
   transform:
-    translate(50%, 50%)
-    translate(-512px, -803.25px);
+    translate(50%, 50%) translate(-512px, -803.25px);
 
   image {
     width: 1024px;
@@ -102,31 +94,23 @@ svg {
 
 .eyebrow {
   --flip: 1;
-  
+
   transform:
-    translate(50%, 50%)
-    translate(
-      calc((var(--miiEyebrowPosX) * 14 - 2) * 1px * var(--flip)),
-      calc((var(--miiEyebrowPosY) * 16.5 - 464.25) * 1px)
-    )
-    scale(var(--flip), 1);
+    translate(50%, 50%) translate(calc((var(--miiEyebrowPosX) * 14 - 2) * 1px * var(--flip)),
+      calc((var(--miiEyebrowPosY) * 16.5 - 464.25) * 1px)) scale(var(--flip), 1);
 
   image {
     width: 180px;
     height: 135px;
 
     transform:
-      rotate(calc(67.5deg - 11.25deg * var(--miiEyebrowRotation)))
-      scale(calc(0.4 + (var(--miiEyebrowSize) * 0.15)))
-      scaleY(calc(0.64 + var(--miiEyebrowStretch) * 0.12))
-      translate(-4px, -105px)
+      rotate(calc(67.5deg - 11.25deg * var(--miiEyebrowRotation))) scale(calc(0.4 + (var(--miiEyebrowSize) * 0.15))) scaleY(calc(0.64 + var(--miiEyebrowStretch) * 0.12)) translate(-4px, -105px)
   }
 }
 
 .nose {
   transform:
-    translate(50%, 50%)
-    translateY(calc(var(--miiNosePosY) * 15px - 308.25px));
+    translate(50%, 50%) translateY(calc(var(--miiNosePosY) * 15px - 308.25px));
 
   image {
     width: 165px;
@@ -135,16 +119,14 @@ svg {
     transform-box: fill-box;
     transform-origin: 50% 50%;
 
-    transform: 
-      translate(-50%, -50%)
-      scale(calc(var(--miiNoseSize) * 0.15 + 0.4));
+    transform:
+      translate(-50%, -50%) scale(calc(var(--miiNoseSize) * 0.15 + 0.4));
   }
 }
 
 .mouth {
   transform:
-    translate(50%, 50%)
-    translateY(calc(var(--miiMouthPosY) * 16.75px - 291px));
+    translate(50%, 50%) translateY(calc(var(--miiMouthPosY) * 16.75px - 291px));
 
   image {
     width: 220px;
@@ -153,11 +135,8 @@ svg {
     transform-box: fill-box;
     transform-origin: 50% 50%;
 
-    transform: 
-      translate(-50%, -50%)
-      translateY(50.8px * 0.25)
-      scale(calc(var(--miiMouthSize) * 0.15 + 0.4))
-      scaleY(calc(var(--miiMouthStretch) * 0.11 + 0.65))
+    transform:
+      translate(-50%, -50%) translateY(50.8px * 0.25) scale(calc(var(--miiMouthSize) * 0.15 + 0.4)) scaleY(calc(var(--miiMouthStretch) * 0.11 + 0.65))
   }
 }
 
@@ -167,34 +146,24 @@ svg {
   --eyeStretch: calc(1 + (var(--miiEyeStretch) - 3) * 0.12);
   --eyeRotation: calc(11.25deg * (4 - var(--miiEyeRotation)));
 
-  transform: 
-    translate(50%, 50%)
-    scaleX(var(--flip))
-    translate(
-      calc(var(--miiEyePosX) * 14px + 11px),
-      calc(var(--miiEyePosY) * 16.5px - 470.25px)
-    )
-    rotate(var(--eyeRotation));
+  transform:
+    translate(50%, 50%) scaleX(var(--flip)) translate(calc(var(--miiEyePosX) * 14px + 11px),
+      calc(var(--miiEyePosY) * 16.5px - 470.25px)) rotate(var(--eyeRotation));
 
   image {
     width: 180px;
     height: 150px;
-  
-    transform: 
-      translate(
-        calc(var(--eyeScale) * -16px),
+
+    transform:
+      translate(calc(var(--eyeScale) * -16px),
         calc(var(--eyeScale) * -75px * var(--eyeStretch)),
-      )
-      scale(var(--eyeScale))
-      scaleY(var(--eyeStretch))
+      ) scale(var(--eyeScale)) scaleY(var(--eyeStretch))
   }
 }
 
 .mustache {
   transform:
-    translate(50%, 50%)
-    translate(0, -300.5px)
-    translateY(calc(var(--miiMustachePosY) * 16.6px));
+    translate(50%, 50%) translate(0, -300.5px) translateY(calc(var(--miiMustachePosY) * 16.6px));
 
   image {
     width: 200px;
@@ -203,31 +172,92 @@ svg {
     transform-box: fill-box;
     transform-origin: 50% 50%;
 
-    transform: 
-      translate(-50%, 0)
-      scale(calc(var(--miiMustacheSize) * 0.15 + 0.4))
+    transform:
+      translate(-50%, 0) scale(calc(var(--miiMustacheSize) * 0.15 + 0.4))
   }
 }
 
+// todo: make more accurate
 .glasses {
-  @include part(
-    'Glasses',
-    $width: 590px,
-    $height: 230px,
-    $offsetY: -408.61px,
-    $baseSize: 0.37,
-    $sizeStep: 0.158,
-  )
+  transform:
+    translate(50%, 50%)
+    translateY(calc(var(--miiGlassesPosY) * (15px * 3) - (408px)));
+
+  image {
+    width: 590px;
+    height: 230px;
+
+    transform-box: fill-box;
+    // transform-origin: 50% 50%;
+
+    transform:
+      scale(calc(var(--miiGlassesSize) * 0.158 + 0.37102)) 
+      translate(-294.85px, -116.78px);
+  }
 }
+
+// .glasses {
+//   --x: calc(294.85px + -295.02px);
+//   --y: calc(116.78px + (15px * var(--miiGlassesPosY)) + 277.85px);
+//   --scale: calc(.37 + (var(--miiGlassesSize) * .158));
+
+//   width: 590px;
+//   height: 230px;
+
+//   transform-box: fill-box;
+
+//   x: 50%; 
+
+//   transform:
+//     translate(0, calc(var(--y) * 1))
+//     scale(var(--scale))
+//     translate(-50%, -277.85px);
+  
+
+//   // height: 590px;
+//   // height: 230px;
+
+//   // transform-box: fill-box;
+//   // transform-origin: 50% 50%;
+
+//   // transform: 
+//   //   translate(-50%, 0)
+//   //   translate(294.85px * 0.25, 116.78px * 0.25)
+//   //   translate(-295.02px * 0.25, 277.85px * 0.25)
+//   //   scale(calc(var(--miiGlassesSize) * .158 + .37102))
+//   // ;
+
+
+//   // image {
+//   //   height: 590px;
+//   //   height: 230px;
+
+//   //   transform-box: fill-box;
+//   //   transform-origin: 50% 50%;
+
+//   //   transform:
+//   //     translate(-50%, 0)
+//   //     translateY(15.19px * 0.25)
+//   //     scale(calc(var(--miiGlassesSize) * .158 + .37102))
+//   // }
+
+//   // hacky
+//   // @include part(
+//   //   'Glasses',
+//   //   $width: 590px,
+//   //   $height: 230px,
+//   //   $offsetY: -500px,
+//   //   $baseSize: 0.37,
+//   //   $sizeStep: 0.158,
+//   //   $transform: 
+//   //     translateY(calc(var(--miiGlassesPosY) * 15.19px))
+//   // )
+// }
 
 .mole {
   transform:
-    translate(50%, 50%)
-    translate(-217.1px, -466.8px)
-    translate(
-      calc(var(--miiMolePosX) * 27.4px),
-      calc(var(--miiMolePosY) * 16.6px)
-    );
+    translate(50%, 50%) translate(-217.1px, -466.8px) translate(calc(var(--miiMolePosX) * 27.4px),
+      calc(var(--miiMolePosY) * 16.6px));
 
   image {
     --offsetX: 349.67px;
@@ -240,7 +270,6 @@ svg {
     transform-origin: var(--offsetX) var(--offsetY);
 
     transform:
-      translate(calc(-1 * var(--offsetX)), calc(-1 * var(--offsetY)) )
-      scale(calc(var(--miiMoleSize) * 0.16 + 0.31))
+      translate(calc(-1 * var(--offsetX)), calc(-1 * var(--offsetY))) scale(calc(var(--miiMoleSize) * 0.16 + 0.31))
   }
 }
