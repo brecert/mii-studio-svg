@@ -196,64 +196,6 @@ svg {
   }
 }
 
-// .glasses {
-//   --x: calc(294.85px + -295.02px);
-//   --y: calc(116.78px + (15px * var(--miiGlassesPosY)) + 277.85px);
-//   --scale: calc(.37 + (var(--miiGlassesSize) * .158));
-
-//   width: 590px;
-//   height: 230px;
-
-//   transform-box: fill-box;
-
-//   x: 50%; 
-
-//   transform:
-//     translate(0, calc(var(--y) * 1))
-//     scale(var(--scale))
-//     translate(-50%, -277.85px);
-  
-
-//   // height: 590px;
-//   // height: 230px;
-
-//   // transform-box: fill-box;
-//   // transform-origin: 50% 50%;
-
-//   // transform: 
-//   //   translate(-50%, 0)
-//   //   translate(294.85px * 0.25, 116.78px * 0.25)
-//   //   translate(-295.02px * 0.25, 277.85px * 0.25)
-//   //   scale(calc(var(--miiGlassesSize) * .158 + .37102))
-//   // ;
-
-
-//   // image {
-//   //   height: 590px;
-//   //   height: 230px;
-
-//   //   transform-box: fill-box;
-//   //   transform-origin: 50% 50%;
-
-//   //   transform:
-//   //     translate(-50%, 0)
-//   //     translateY(15.19px * 0.25)
-//   //     scale(calc(var(--miiGlassesSize) * .158 + .37102))
-//   // }
-
-//   // hacky
-//   // @include part(
-//   //   'Glasses',
-//   //   $width: 590px,
-//   //   $height: 230px,
-//   //   $offsetY: -500px,
-//   //   $baseSize: 0.37,
-//   //   $sizeStep: 0.158,
-//   //   $transform: 
-//   //     translateY(calc(var(--miiGlassesPosY) * 15.19px))
-//   // )
-// }
-
 .mole {
   transform:
     translate(50%, 50%) translate(-217.1px, -466.8px) translate(calc(var(--miiMolePosX) * 27.4px),

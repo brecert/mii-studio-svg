@@ -1,3 +1,4 @@
+/* default */
 .mii {
   --miiFavoriteColor: 11;
   --miiGender: 1;
@@ -57,6 +58,7 @@
   --miiMoleSize: 4;
 }
 
+/* generated */
 .mii {
   --miiMiiGender: 1;
   --miiFavoriteColor: 8;
